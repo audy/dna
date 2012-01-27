@@ -3,7 +3,7 @@ class Dna # iterator
   
   def initialize(handle, args={})
     @handle = handle
-    @format = args[:type].to_sym
+    @format = args[:format].to_sym
     
     @iterator = 
       case @format

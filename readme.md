@@ -23,10 +23,23 @@ Supported Formats:
 require 'dna'
 
 File.open('sequences.fasta') do |handle|
-  records = Dna.new(handle)
+  records = Dna.new handle, format: 'fastq'
   
   records.each do |record|
     puts record.length
   end
+end
+
+File.open('sequences.fastq') do |handle|
+  records = Dna.new handle, format: 'fastq'
+
+  records.each do |record|
+    puts record.quality
+  end
+end
+
+File.open('sequences.qseq') do |handle|
+  records = Dna.new handle, format: 'qseq'
+  puts records.first.inspect
 end
 ```
