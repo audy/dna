@@ -67,6 +67,25 @@ class Dna # iterator
   end
   
   def qseq_parser
+    Enumerator.new do |enum|
+      @handle.each do |line|
+        line = line.strip.split("\t")
+        record = QSEQ.new(
+          machine: line[0],
+          run: line[1],
+          lane: line[2],
+          tile: line[3],
+          x: line[4],
+          y: line[5],
+          index: line[6],
+          read_no: line[7],
+          sequence: line[8],
+          quality: line[9],
+          filtered: line[10],
+        )
+        enum.yield record
+      end
+    end
   end
 end
 
@@ -88,7 +107,7 @@ class Fasta < Record
   end
   
   def to_s
-      ">#{@name}\n#{@sequence}\n"
+    ">#{@name}\n#{@sequence}\n"
   end
 end
 
@@ -112,7 +131,6 @@ end
 ##
 # QSEQ record
 #
-
 class QSEQ < Record
   attr_accessor :machine, :run, :lane, :tile, :x, :y, :index, :read_no, :sequence, :quality, :filtered
   
