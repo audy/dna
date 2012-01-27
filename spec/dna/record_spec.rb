@@ -1,23 +1,27 @@
 require 'spec_helper'
 
 describe Fasta do
-  
+
   let (:fasta) { Fasta.new name: 'test', sequence: 'GATC'}
-  
+
   it 'can be created' do
     fasta.should_not be_nil
   end
-  
+
   it 'has a name' do
     fasta.name.should_not be_nil
   end
-  
+
   it 'has a sequence' do
     fasta.sequence.should_not be_nil
   end
-  
+
   it 'has a length' do
     fasta.length.should == fasta.sequence.length
+  end
+
+  it 'can be printed as fasta' do
+    fasta.to_s.should == ">#{fasta.name}\n#{fasta.sequence}"
   end
 end
 
@@ -35,13 +39,17 @@ describe Fastq do
   it 'has a sequence' do
     fastq.sequence.should_not be_nil
   end
-  
+
   it 'has a quality score string' do
     fastq.quality.should_not be_nil
   end
-  
+
   it 'has a length' do
     fastq.length.should == fastq.sequence.length
+  end
+
+  it 'can be printed as fastq' do
+    fastq.to_s.should == "@#{fastq.name}\n#{fastq.sequence}\n+#{fastq.name}\n#{fastq.quality}"
   end
 end
 
