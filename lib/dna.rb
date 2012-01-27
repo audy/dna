@@ -1,10 +1,13 @@
+##
+# Dna
+#
 class Dna # iterator
   include Enumerable
-  
+
   def initialize(handle, args={})
     @handle = handle
     @format = args[:format].to_sym
-    
+
     @iterator = 
       case @format
       when :fasta
@@ -17,7 +20,7 @@ class Dna # iterator
         raise "#{@type} not supported."
       end
   end
-  
+
   def each &block
     @iterator.each do |r|
       if block_given?
@@ -27,9 +30,9 @@ class Dna # iterator
       end
     end
   end
-  
+
   private
-  
+
   def fasta_parser
     sequence, header = nil, nil
     Enumerator.new do |enum|
@@ -45,7 +48,7 @@ class Dna # iterator
       enum.yield Fasta.new(name: header, sequence: sequence)
     end
   end
-  
+
   def fastq_parser
     c = (0..3).cycle
     Enumerator.new do |enum|
@@ -65,7 +68,7 @@ class Dna # iterator
       end
     end
   end
-  
+
   def qseq_parser
     Enumerator.new do |enum|
       @handle.each do |line|
@@ -100,12 +103,12 @@ end
 #
 class Fasta < Record
   attr_accessor :name, :sequence
-  
+
   def initialize(args={})
     @name = args[:name]
     @sequence = args[:sequence]
   end
-  
+
   def to_s
     ">#{@name}\n#{@sequence}\n"
   end
@@ -116,13 +119,13 @@ end
 #
 class Fastq < Record
   attr_accessor :name, :sequence, :format, :quality
-  
+
   def initialize(args={})
     @name = args[:name]
     @sequence = args[:sequence]
     @quality = args[:quality]
   end
-  
+
   def to_s
     "@#{@name}\n#{@sequence}\n+#{@name}\n#{@quality}"
   end
@@ -132,8 +135,18 @@ end
 # QSEQ record
 #2
 class QSEQ < Record
-  attr_accessor :machine, :run, :lane, :tile, :x, :y, :index, :read_no, :sequence, :quality, :filtered
-  
+  attr_accessor :machine,
+                :run,
+                :lane,
+                :tile,
+                :x,
+                :y,
+                :index,
+                :read_no,
+                :sequence,
+                :quality,
+                :filtered
+
   def initialize(args={})
     @machine = args[:machine]
     @run = args[:run]
@@ -147,11 +160,11 @@ class QSEQ < Record
     @quality = args[:quality]
     @filtered = args[:filtered]
   end
-  
+
   def to_s
     [@machine, @run, @lane, @tile, @x, @y, @index, @read_no, @sequence, @quality, @filtered].join("\t")
   end
-  
+
   def header
     [@machine, @run, @lane, @tile, @x, @y, @index, @read_no, @sequence, @quality, @filtered].join(':')
   end
