@@ -110,7 +110,7 @@ class Fasta < Record
   end
 
   def to_s
-    ">#{@name}\n#{@sequence}\n"
+    ">#{@name}\n#{@sequence}"
   end
 end
 
