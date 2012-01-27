@@ -47,7 +47,7 @@ end
 
 describe QSEQ do
   let (:qseq) {
-    line = 'HWUSI-EAS1690	0007	1	1	1139	20892	0	1	GTGTGCCAGCCGCCGCGGTAATACGTAGGTGGCAAGCGTTGTCCGGATTTATTGGGTGTAAAGGGCGCGTAGGCGGCCCTGTAAGTCAGTGGTGAAATCTC	fffffffffffffffeeeeedddddabdd\dddabeeeee^aabdcabddaKdddc`RcY`_c`aT`Ib]Tc^\cZEKOZ_\]\bZVK^UZG]`[^BBBBB	1'.split("\t")
+    line = "HWUSI-EAS1690\t0007\t1\t1\t1139\t20892\t0\t1\tGTGTGCCAGCCGCCGCGGTAATACGTAGGTGGCAAGCGTTGTCCGGATTTATTGGGTGTAAAGGGCGCGTAGGCGGCCCTGTAAGTCAGTGGTGAAATCTC\tfffffffffffffffeeeeedddddabdd\dddabeeeee^aabdcabddaKdddc`RcY`_c`aT`Ib]Tc^\cZEKOZ_\]\bZVK^UZG]`[^BBBBB\t1".split("\t")
     QSEQ.new(
       machine: line[0],
       run: line[1],
