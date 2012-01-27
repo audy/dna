@@ -130,7 +130,7 @@ end
 
 ##
 # QSEQ record
-#
+#2
 class QSEQ < Record
   attr_accessor :machine, :run, :lane, :tile, :x, :y, :index, :read_no, :sequence, :quality, :filtered
   
