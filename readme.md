@@ -1,8 +1,8 @@
 # DNA
 
-Austin G. Davis-Richardson
+A minimalistic sequence file parser.
 
-Sequence file iterator
+Austin G. Davis-Richardson
 
 Supported Formats:
 
