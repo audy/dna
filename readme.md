@@ -4,9 +4,9 @@ Austin G. Davis-Richardson
 
 Sequence file iterator
 
-  - fasta
-  - fastq
-  - qseq
+  - [fasta](http://en.wikipedia.org/wiki/FASTA)
+  - [fastq](http://en.wikipedia.org/wiki/Fastq)
+  - [qseq](http://blog.kokocinski.net/index.php/qseq-files-format?blog=2)
 
 ## Installation
 
