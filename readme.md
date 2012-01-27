@@ -14,6 +14,8 @@ Supported Formats:
 
 ## Installation
 
+With Ruby 1.9.2 or better:
+
 `gem install dna`
 
 ## Usage
