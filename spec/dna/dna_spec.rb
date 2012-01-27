@@ -8,7 +8,7 @@ describe Dna do
 	}
 	
 	it 'can parse a crappily formatted fasta file' do
-		records = Dna.new fasta
-		records.to_a.length.should == 2
+		records = Dna.new fasta, type: 'fasta'
+    records.to_a.length.should == 2
 	end
 end
