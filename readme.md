@@ -2,9 +2,11 @@
 
 Austin G. Davis-Richardson
 
-Fasta file iterator. I created this gem because I was tired of copy-pasting dna.rb into my projects.
+Sequence file iterator
 
-Coming soon: fastq, and qseq file formats.
+  - fasta
+  - fastq
+  - qseq
 
 ## Installation
 
