@@ -35,18 +35,35 @@ class Dna # iterator
     Enumerator.new do |enum|
       @handle.each do |line|
         if line[0].chr == '>'
-          enum.yield Fasta.new(:name => header, :sequence => sequence) if sequence
+          enum.yield Fasta.new(name: header, sequence: sequence) if sequence
           sequence = ''
           header = line[1..-1].strip
         else
           sequence << line.strip.tr(' ','')
         end
       end
-      enum.yield Fasta.new(:name => header, :sequence => sequence)
+      enum.yield Fasta.new(name: header, sequence: sequence)
     end
   end
   
   def fastq_parser
+    c = (0..3).cycle
+    Enumerator.new do |enum|
+      @handle.each do |line|
+        n = c.next
+        case n
+        when 0
+          header = line.strip
+        when 1
+          sequence = line.strip
+        when 2
+          nil
+        when 3
+          quality = line.strip
+          enum.yield Fastq.new(name: header, sequence: sequence, quality: quality)
+        end
+      end
+    end
   end
   
   def qseq_parser
