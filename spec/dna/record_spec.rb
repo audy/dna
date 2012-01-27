@@ -71,7 +71,7 @@ describe QSEQ do
   end
   
   ['machine', 'run', 'lane', 'tile', 'x', 'y', 'index', 'read_no', 'sequence', 'quality', 'filtered'].each do |property|
-    it "has a #{property}" do
+    it "has property #{property}" do
       qseq.send(property).should_not be_nil
     end
   end
