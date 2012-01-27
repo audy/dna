@@ -13,6 +13,9 @@ Coming soon: fastq, and qseq file formats.
 ## Usage
 
 ```ruby
+
+require 'dna'
+
 File.open('sequences.fasta') do |handle|
   records = Dna.new(handle)
   
