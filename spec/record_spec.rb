@@ -27,15 +27,15 @@ end
 
 describe Fastq do
   let (:fastq) { Fastq.new name: 'test', sequence: 'GATC', quality: '....' }
-  
+
   it 'can be created' do
     fastq.should_not be_nil
   end
-  
+
   it 'has a name' do
     fastq.name.should_not be_nil
   end
-  
+
   it 'has a sequence' do
     fastq.sequence.should_not be_nil
   end
