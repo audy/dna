@@ -52,19 +52,20 @@ class Dna # iterator
   def fastq_parser
     c = (0..3).cycle
     Enumerator.new do |enum|
+      params = { name: nil, sequence: nil, quality: nil }
       @handle.each do |line|
         n = c.next
         case n
         when 0
-          @header = line.strip
+          params[:name] = line.strip
         when 1
-          @sequence = line.strip
+          params[:sequence] = line.strip
         when 2
           nil
         when 3
-          @quality = line.strip
-          fastq = Fastq.new(name: @header, sequence: @sequence, quality: @quality)
-          enum.yield fastq
+          params[:quality] = line.strip
+          record = Fastq.new params
+          enum.yield record
         end
       end
     end
