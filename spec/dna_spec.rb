@@ -23,6 +23,10 @@ describe Dna do
     fastq.first.class.should == Fastq
   end
 
+  it 'generates fastq objects from a fasta file' do
+    fastq.first.sequence.should_not be_nil
+  end
+
   it 'can parse qseq' do
     qseq.to_a.length.should == 2
   end

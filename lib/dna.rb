@@ -56,14 +56,15 @@ class Dna # iterator
         n = c.next
         case n
         when 0
-          header = line.strip
+          @header = line.strip
         when 1
-          sequence = line.strip
+          @sequence = line.strip
         when 2
           nil
         when 3
-          quality = line.strip
-          enum.yield Fastq.new(name: header, sequence: sequence, quality: quality)
+          @quality = line.strip
+          fastq = Fastq.new(name: @header, sequence: @sequence, quality: @quality)
+          enum.yield fastq
         end
       end
     end

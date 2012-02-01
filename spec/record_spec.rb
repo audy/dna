@@ -26,7 +26,7 @@ describe Fasta do
 end
 
 describe Fastq do
-  let (:fastq) { Fastq.new name: 'test', sequence: 'GATC', quality: '....' }
+  let (:fastq) { Fastq.new name: 'test', sequence: 'GATC', quality: 'BBBB' }
 
   it 'can be created' do
     fastq.should_not be_nil
