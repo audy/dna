@@ -17,7 +17,7 @@ class Dna # iterator
       when :qseq
         qseq_parser
       else
-        raise "#{@type} not supported."
+        raise "#{@format} not supported."
       end
   end
 
