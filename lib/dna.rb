@@ -57,7 +57,7 @@ class Dna # iterator
         n = c.next
         case n
         when 0
-          params[:name] = line.strip
+          params[:name] = line.strip[1..-1]
         when 1
           params[:sequence] = line.strip
         when 2
@@ -143,7 +143,7 @@ class QSEQ < Record
   def initialize(args={})
     # These are the properties defined by the qseq spec
     # they must be in the same order that they appear in the tab-separated qseq file
-
+    @properties = :machine, :run, :lane, :tile, :x, :y, :index, :read_no, :sequence, :quality, :filtered
     @machine = args[:machine]
     @run = args[:run]
     @lane = args[:lane]
