@@ -138,13 +138,23 @@ end
 #2
 class QSEQ < Record
 
+  attr_accessor :machine, :run, :lane, :tile, :x, :y, :index, :read_no, :sequence, :quality, :filtered
+
   def initialize(args={})
     # These are the properties defined by the qseq spec
     # they must be in the same order that they appear in the tab-separated qseq file
-    @properties = [:machine, :run, :lane, :tile, :x, :y, :index, :read_no, :sequence, :quality, :filtered]
-    @properties.each do |p|
-      self.class.send(:define_method, p) { args[p] }
-    end
+
+    @machine = args[:machine]
+    @run = args[:run]
+    @lane = args[:lane]
+    @tile = args[:tile]
+    @x = args[:x]
+    @y = args[:y]
+    @index = args[:index]
+    @read_no = args[:read_no]
+    @sequence = args[:sequence]
+    @quality = args[:quality]
+    @filtered = args[:filtered]
   end
 
   def to_s
