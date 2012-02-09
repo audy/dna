@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Fasta do
 
-  let (:fasta) { Fasta.new name: 'test', sequence: 'GATC'}
+  let (:fasta) { Fasta.new :name => 'test', :sequence => 'GATC'}
 
   it 'can be created' do
     fasta.should_not be_nil
@@ -26,7 +26,7 @@ describe Fasta do
 end
 
 describe Fastq do
-  let (:fastq) { Fastq.new name: 'test', sequence: 'GATC', quality: 'BBBB' }
+  let (:fastq) { Fastq.new :name => 'test', :sequence => 'GATC', :quality  => 'BBBB' }
 
   it 'can be created' do
     fastq.should_not be_nil
@@ -58,17 +58,17 @@ describe QSEQ do
 
   let (:properties) {
     line = string.split("\t")
-    { machine: line[0],
-      run: line[1],
-      lane: line[2],
-      tile: line[3],
-      x: line[4],
-      y: line[5],
-      index: line[6],
-      read_no: line[7],
-      sequence: line[8],
-      quality: line[9],
-      filtered: line[10] }
+    { :machine => line[0],
+      :run => line[1],
+      :lane => line[2],
+      :tile => line[3],
+      :x => line[4],
+      :y => line[5],
+      :index => line[6],
+      :read_no => line[7],
+      :sequence => line[8],
+      :quality => line[9],
+      :filtered => line[10] }
   }
 
   let (:qseq) {

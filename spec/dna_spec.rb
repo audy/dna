@@ -3,9 +3,9 @@ require 'spec_helper'
 describe Dna do
   include_context "parser stuff"
 
-  let(:fasta) { Dna.new @fasta_file, format: 'fasta' }
-  let (:fastq) { Dna.new @fastq_file, format: 'fastq' }
-  let (:qseq) { Dna.new @qseq_file, format: 'qseq' }
+  let(:fasta) { Dna.new @fasta_file, :format => 'fasta' }
+  let (:fastq) { Dna.new @fastq_file, :format => 'fastq' }
+  let (:qseq) { Dna.new @qseq_file, :format => 'qseq' }
 
   it 'can properly parse a crappily formatted fasta file' do
     records = fasta.to_a

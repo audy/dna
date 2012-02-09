@@ -38,21 +38,21 @@ class Dna # iterator
     Enumerator.new do |enum|
       @handle.each do |line|
         if line[0].chr == '>'
-          enum.yield Fasta.new(name: header, sequence: sequence) if sequence
+          enum.yield Fasta.new(:name => header, :sequence => sequence) if sequence
           sequence = ''
           header = line[1..-1].strip
         else
           sequence << line.strip.tr(' ','')
         end
       end
-      enum.yield Fasta.new(name: header, sequence: sequence)
+      enum.yield Fasta.new(:name => header, :sequence => sequence)
     end
   end
 
   def fastq_parser
     c = (0..3).cycle
     Enumerator.new do |enum|
-      params = { name: nil, sequence: nil, quality: nil }
+      params = { :name => nil, :sequence => nil, :quality => nil }
       @handle.each do |line|
         n = c.next
         case n
@@ -76,17 +76,17 @@ class Dna # iterator
       @handle.each do |line|
         line = line.strip.split("\t")
         record = QSEQ.new(
-          machine: line[0],
-          run: line[1],
-          lane: line[2],
-          tile: line[3],
-          x: line[4],
-          y: line[5],
-          index: line[6],
-          read_no: line[7],
-          sequence: line[8],
-          quality: line[9],
-          filtered: line[10],
+          :machine => line[0],
+          :run => line[1],
+          :lane => line[2],
+          :tile => line[3],
+          :x => line[4],
+          :y => line[5],
+          :index => line[6],
+          :read_no => line[7],
+          :sequence => line[8],
+          :quality => line[9],
+          :filtered => line[10]
         )
         enum.yield record
       end
