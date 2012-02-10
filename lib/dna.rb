@@ -4,11 +4,12 @@
 class Dna # iterator
   include Enumerable
 
+  attr_reader :format
+
   def initialize(handle, args={})
     @handle = handle
-    @format = args[:format].to_sym
-
-    @iterator = 
+    @format = detect_format
+    @iterator =
       case @format
       when :fasta
         fasta_parser
@@ -19,6 +20,22 @@ class Dna # iterator
       else
         raise "#{@format} not supported."
       end
+  end
+
+  def detect_format
+    first_line = @handle.first
+    @handle.rewind if @handle.class == File
+
+    # detect qseq by counting number of tabs.
+    if first_line.split("\t").length == 11
+      return :qseq
+    elsif first_line[0].chr == '>'
+      return :fasta
+    elsif first_line[0].chr == '@'
+      return :fastq
+    else
+      raise Exception, "cannot detect format of input"
+    end
   end
 
   def each &block
