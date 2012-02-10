@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
 	s.name = 'dna'
-	s.version = '0.0.4'
-	s.date = '2010-02-07'
+	s.version = '0.0.5'
+	s.date = '2010-02-10'
 	s.summary = 'DNA sequence parser'
 	s.description = 'for parsing various types of DNA sequence files'
 	s.authors = ["Austin G. Davis-Richardson"]
