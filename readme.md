@@ -24,8 +24,10 @@ With Ruby 1.9.2 or better:
 
 require 'dna'
 
+# format detected automatically by inspecting the contents of the file.
+
 File.open('sequences.fasta') do |handle|
-  records = Dna.new handle, format: 'fastq'
+  records = Dna.new handle
   
   records.each do |record|
     puts record.length
@@ -33,7 +35,7 @@ File.open('sequences.fasta') do |handle|
 end
 
 File.open('sequences.fastq') do |handle|
-  records = Dna.new handle, format: 'fastq'
+  records = Dna.new handle
 
   records.each do |record|
     puts record.quality
@@ -41,7 +43,7 @@ File.open('sequences.fastq') do |handle|
 end
 
 File.open('sequences.qseq') do |handle|
-  records = Dna.new handle, format: 'qseq'
+  records = Dna.new handle
   puts records.first.inspect
 end
 ```
