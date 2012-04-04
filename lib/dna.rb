@@ -1,22 +1,24 @@
+Dir.glob(File.join(File.dirname(__FILE__), 'parsers', '*.rb')).each { |f| require f }
+
 ##
 # Dna
 #
-class Dna # iterator
+class Dna
   include Enumerable
 
   attr_reader :format
 
-  def initialize(handle, args={})
+  def initialize(handle)
     @handle = handle
     @format = detect_format
     @iterator =
       case @format
       when :fasta
-        fasta_parser
+        FastaParser.new @handle
       when :fastq
-        fastq_parser
+        FastqParser.new @handle
       when :qseq
-        qseq_parser
+        QSEQParser.new @handle
       else
         raise "#{@format} not supported."
       end
@@ -39,75 +41,7 @@ class Dna # iterator
   end
 
   def each &block
-    @iterator.each do |r|
-      if block_given?
-        block.call r
-      else
-        yield r
-      end
-    end
-  end
-
-  private
-
-  def fasta_parser
-    sequence, header = nil, nil
-    Enumerator.new do |enum|
-      @handle.each do |line|
-        if line[0].chr == '>'
-          enum.yield Fasta.new(:name => header, :sequence => sequence) if sequence
-          sequence = ''
-          header = line[1..-1].strip
-        else
-          sequence << line.strip.tr(' ','')
-        end
-      end
-      enum.yield Fasta.new(:name => header, :sequence => sequence)
-    end
-  end
-
-  def fastq_parser
-    c = (0..3).cycle
-    Enumerator.new do |enum|
-      params = { :name => nil, :sequence => nil, :quality => nil }
-      @handle.each do |line|
-        n = c.next
-        case n
-        when 0
-          params[:name] = line.strip[1..-1]
-        when 1
-          params[:sequence] = line.strip
-        when 2
-          nil
-        when 3
-          params[:quality] = line.strip
-          record = Fastq.new params
-          enum.yield record
-        end
-      end
-    end
-  end
-
-  def qseq_parser
-    Enumerator.new do |enum|
-      @handle.each do |line|
-        line = line.strip.split("\t")
-        record = QSEQ.new(
-          :machine => line[0],
-          :run => line[1],
-          :lane => line[2],
-          :tile => line[3],
-          :x => line[4],
-          :y => line[5],
-          :index => line[6],
-          :read_no => line[7],
-          :sequence => line[8],
-          :quality => line[9],
-          :filtered => line[10]
-        )
-        enum.yield record
-      end
-    end
+    @iterator.each(&block)
   end
 end
 

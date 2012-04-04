@@ -3,9 +3,9 @@ require 'spec_helper'
 describe Dna do
   include_context "parser stuff"
 
-  let(:fasta) { Dna.new @fasta_file }
-  let (:fastq) { Dna.new @fastq_file }
-  let (:qseq) { Dna.new @qseq_file }
+  let(:fasta) { Dna.new(@fasta_file) }
+  let(:fastq) { Dna.new @fastq_file }
+  let(:qseq) { Dna.new @qseq_file }
 
   it 'can auto-detect fasta format' do
     fasta.format == 'fasta'
