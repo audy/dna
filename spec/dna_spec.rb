@@ -6,17 +6,22 @@ describe Dna do
   let(:fasta) { Dna.new(@fasta_file) }
   let(:fastq) { Dna.new @fastq_file }
   let(:qseq) { Dna.new @qseq_file }
+  let(:empty) { Dna.new @empty_file }
+
+  it 'doesnt freak out on empty files' do
+    fasta.format == :empty
+  end
 
   it 'can auto-detect fasta format' do
-    fasta.format == 'fasta'
+    fasta.format.should == :fasta
   end
 
   it 'can auto-detect fastq format' do
-    fastq.format == 'fastq'
+    fastq.format.should == :fastq
   end
 
   it 'can auto-detect qseq format' do
-    qseq.format == 'qseq'
+    qseq.format.should == :qseq
   end
 
   it 'can properly parse a crappily formatted fasta file' do

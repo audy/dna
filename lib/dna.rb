@@ -28,6 +28,8 @@ class Dna
     first_line = @handle.first
     @handle.rewind if @handle.class == File
 
+    return :unknown if first_line == nil
+
     # detect qseq by counting number of tabs.
     if first_line.split("\t").length == 11
       return :qseq
