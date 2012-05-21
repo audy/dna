@@ -18,6 +18,32 @@ With Ruby 1.8.7 or better:
 
 `gem install dna`
 
+## CLI
+
+DNA gem has grep-like capabilities. Print records with (Ruby) regexp match in header.
+
+```
+$ dna input.fastq "[1-2]"
+
+@1
+TGAAACTTATTGATCACCCCGCTTGGCGTTGGGGAGAAATTCAGAAAAGAGTGCTTGATGGGGCGCCACATGCCGTGCAACCCACTCTCTTTCACGCAGCGCGCCCCA
++1
+5888.6778888650/-//&,(,./*-11'//0&,-0.(.,,,,/2/&-,,,,,.(.,(,..&---&-,,,((*-----*+.&,,,,,(//&,,,-(,,+(,,,--&(
+@2
+GTCGCGGCTTACCACCCAACGATTTTTTTTAGAGGTGCTGGTTTCA
++2
+2550//*-1./4.--/'+.2.,,,,,,,,&(/00.11426554+13
+
+$ cat input.fasta | dna "\d"
+
+>1
+GAGAGATCTCATGACACAGCCGAAG
+>2
+GAGACAUAUCCNNNAA
+
+```
+
+
 ## Usage
 
 ```ruby

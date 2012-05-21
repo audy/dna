@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib', 'dna'))
+
+input, regexp = [File.open(ARGV[0]), ARGV[1]]
+
+fail 'usage: dna input regexp > output' if regexp.nil?
+
+records = Dna.new input
+regexp  = Regexp.new(regexp)
+
+records.each do |record|
+  puts record if record.name =~ regexp
+end
+
+input.close
