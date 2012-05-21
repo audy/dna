@@ -72,4 +72,14 @@ File.open('sequences.qseq') do |handle|
   records = Dna.new handle
   puts records.first.inspect
 end
+
+# even works on gzipped data
+
+File.open('sequences.fasta.gz') do |handle|
+  records = Dna.new handle
+
+  records.each do |record|
+    puts record.length
+  end
+end
 ```

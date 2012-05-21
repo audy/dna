@@ -14,6 +14,7 @@ shared_context "parser stuff" do
     @fasta_file = fasta_file
     @fastq_file = fastq_file
     @qseq_file = qseq_file
-    @empty_fiel = empty_file
+    @empty_file = empty_file
+    @gzip_file = File.open(File.join(path, 'data/test.fasta.gz'))
   end
 end

@@ -7,9 +7,14 @@ describe Dna do
   let(:fastq) { Dna.new @fastq_file }
   let(:qseq) { Dna.new @qseq_file }
   let(:empty) { Dna.new @empty_file }
+  let(:gzipped) { Dna.new @gzip_file }
 
   it 'doesnt freak out on empty files' do
     fasta.format == :empty
+  end
+
+  it 'can automatically parse gzipped files' do
+    gzipped.format.should == :fasta
   end
 
   it 'can auto-detect fasta format' do

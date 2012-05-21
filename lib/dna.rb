@@ -1,3 +1,5 @@
+require 'zlib'
+
 Dir.glob(File.join(File.dirname(__FILE__), 'parsers', '*.rb')).each { |f| require f }
 
 ##
@@ -25,6 +27,16 @@ class Dna
   end
 
   def detect_format
+    
+    # is gzipped?
+    unless @handle.class == Array # for tests mostly...
+      begin
+        @handle = Zlib::GzipReader.new(@handle)
+      rescue
+        @handle.rewind
+      end
+    end
+    
     first_line = @handle.first
     @handle.rewind if @handle.class == File
 
