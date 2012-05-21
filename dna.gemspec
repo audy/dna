@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
 	s.name    = 'dna'
-	s.version = '0.0.10'
+	s.version = '0.0.11'
 	s.date    = '2012-05-21'
 
 	s.summary     = 'DNA sequence parser'
