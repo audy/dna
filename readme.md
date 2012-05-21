@@ -23,7 +23,7 @@ With Ruby 1.8.7 or better:
 DNA gem has grep-like capabilities. Print records with (Ruby) regexp match in header.
 
 ```
-$ dna input.fastq "[1-2]"
+$ dna spec/data/input.fastq "[1-2]"
 
 @1
 TGAAACTTATTGATCACCCCGCTTGGCGTTGGGGAGAAATTCAGAAAAGAGTGCTTGATGGGGCGCCACATGCCGTGCAACCCACTCTCTTTCACGCAGCGCGCCCCA
@@ -34,7 +34,7 @@ GTCGCGGCTTACCACCCAACGATTTTTTTTAGAGGTGCTGGTTTCA
 +2
 2550//*-1./4.--/'+.2.,,,,,,,,&(/00.11426554+13
 
-$ cat input.fasta | dna "\d"
+$ dna spec/data/test.fasta "\d"
 
 >1
 GAGAGATCTCATGACACAGCCGAAG
