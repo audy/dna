@@ -24,3 +24,20 @@ class FastqParser
     end
   end
 end
+
+##
+# Fastq record
+#
+class Fastq < Record
+  attr_accessor :name, :sequence, :format, :quality
+
+  def initialize(args={})
+    @name = args[:name]
+    @sequence = args[:sequence]
+    @quality = args[:quality]
+  end
+
+  def to_s
+    "@#{@name}\n#{@sequence}\n+#{@name}\n#{@quality}"
+  end
+end

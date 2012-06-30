@@ -24,3 +24,36 @@ class QSEQParser
     end
   end
 end
+
+##
+# QSEQ record
+#
+class QSEQ < Record
+
+  attr_accessor :machine, :run, :lane, :tile, :x, :y, :index, :read_no, :sequence, :quality, :filtered
+
+  def initialize(args={})
+    # These are the properties defined by the qseq spec
+    # they must be in the same order that they appear in the tab-separated qseq file
+    @properties = :machine, :run, :lane, :tile, :x, :y, :index, :read_no, :sequence, :quality, :filtered
+    @machine = args[:machine]
+    @run = args[:run]
+    @lane = args[:lane]
+    @tile = args[:tile]
+    @x = args[:x]
+    @y = args[:y]
+    @index = args[:index]
+    @read_no = args[:read_no]
+    @sequence = args[:sequence]
+    @quality = args[:quality]
+    @filtered = args[:filtered]
+  end
+
+  def to_s
+    @properties.collect { |x| self.send(x) }.join("\t")
+  end
+
+  def header
+    @properties.collect { |x| self.send(x) }.join("\t")
+  end
+end

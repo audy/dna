@@ -18,3 +18,19 @@ class FastaParser
     yield Fasta.new(:name => header, :sequence => sequence)
   end
 end
+
+##
+# Fasta record
+#
+class Fasta < Record
+  attr_accessor :name, :sequence
+
+  def initialize(args={})
+    @name = args[:name]
+    @sequence = args[:sequence]
+  end
+
+  def to_s
+    ">#{@name}\n#{@sequence}"
+  end
+end

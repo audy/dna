@@ -1,7 +1,5 @@
 require 'zlib'
 
-Dir.glob(File.join(File.dirname(__FILE__), 'parsers', '*.rb')).each { |f| require f }
-
 ##
 # Dna
 #
@@ -65,68 +63,4 @@ class Record # nucleotide record
   end
 end
 
-##
-# Fasta record
-#
-class Fasta < Record
-  attr_accessor :name, :sequence
-
-  def initialize(args={})
-    @name = args[:name]
-    @sequence = args[:sequence]
-  end
-
-  def to_s
-    ">#{@name}\n#{@sequence}"
-  end
-end
-
-##
-# Fastq record
-#
-class Fastq < Record
-  attr_accessor :name, :sequence, :format, :quality
-
-  def initialize(args={})
-    @name = args[:name]
-    @sequence = args[:sequence]
-    @quality = args[:quality]
-  end
-
-  def to_s
-    "@#{@name}\n#{@sequence}\n+#{@name}\n#{@quality}"
-  end
-end
-
-##
-# QSEQ record
-#2
-class QSEQ < Record
-
-  attr_accessor :machine, :run, :lane, :tile, :x, :y, :index, :read_no, :sequence, :quality, :filtered
-
-  def initialize(args={})
-    # These are the properties defined by the qseq spec
-    # they must be in the same order that they appear in the tab-separated qseq file
-    @properties = :machine, :run, :lane, :tile, :x, :y, :index, :read_no, :sequence, :quality, :filtered
-    @machine = args[:machine]
-    @run = args[:run]
-    @lane = args[:lane]
-    @tile = args[:tile]
-    @x = args[:x]
-    @y = args[:y]
-    @index = args[:index]
-    @read_no = args[:read_no]
-    @sequence = args[:sequence]
-    @quality = args[:quality]
-    @filtered = args[:filtered]
-  end
-
-  def to_s
-    @properties.collect { |x| self.send(x) }.join("\t")
-  end
-
-  def header
-    @properties.collect { |x| self.send(x) }.join("\t")
-  end
-end
+Dir.glob(File.join(File.dirname(__FILE__), 'parsers', '*.rb')).each { |f| require f }
