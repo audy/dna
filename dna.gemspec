@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "dna"
-  s.version = "0.0.12"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Austin G. Davis-Richardson"]
@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
     "lib/dna/parsers/fastq.rb",
     "lib/dna/parsers/qseq.rb",
     "lib/dna/record.rb",
+    "lib/dna/version.rb",
     "readme.md",
     "spec/data/empty.txt",
     "spec/data/test.fasta",
