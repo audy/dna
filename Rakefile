@@ -3,7 +3,7 @@
 require 'rubygems'
 require 'bundler'
 
-DNA_VERSION = '0.0.12'
+require './lib/dna/version.rb'
 
 begin
   Bundler.setup(:default, :development)
@@ -23,7 +23,7 @@ Jeweler::Tasks.new do |gem|
   gem.description = "Simple FASTA/FASTQ/QSEQ parser library for Ruby."
   gem.email = "harekrishna@gmail.com"
   gem.authors = ["Austin G. Davis-Richardson"]
-  gem.version = DNA_VERSION
+  gem.version = Dna::Version::STRING
 end
 Jeweler::RubygemsDotOrgTasks.new
 
@@ -39,7 +39,7 @@ task :default => :test
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
 
-  version = DNA_VERSION
+  version = Dna::Version::STRING
 
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = "test #{version}"
