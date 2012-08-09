@@ -10,7 +10,7 @@ Supported Formats:
   - [fastq](http://en.wikipedia.org/wiki/Fastq)
   - [qseq](http://blog.kokocinski.net/index.php/qseq-files-format?blog=2)
 
-[Request a format](https://github.com/audy/dna/issues/new)
+[Request a format](https://github.com/audy/dna/issues/new?title=request%20for%20new%20format)
 
 ## Installation
 
