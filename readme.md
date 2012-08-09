@@ -6,19 +6,21 @@ Austin G. Davis-Richardson
 
 Features
 
-  - Supported Formats ([request another](https://github.com/audy/dna/issues/new?title=request%20for%20new%20format))
+  - Supported Formats ([submit a format request](https://github.com/audy/dna/issues/new?title=request%20for%20new%20format))
     - [fasta](http://en.wikipedia.org/wiki/FASTA)
     - [fastq](http://en.wikipedia.org/wiki/Fastq)
     - [qseq](http://blog.kokocinski.net/index.php/qseq-files-format?blog=2)
   - Autodetection of file formats so your scripts can be format agnostic
+  - Automatic Gzip support
+  - Files are read from disk (not stored in memory)
 
 ## Installation
 
 With Ruby 1.8.7 or better:
 
-`(sudo) gem install dna`
-
-
+```
+$ (sudo) gem install dna
+```
 
 ## Usage
 
@@ -26,7 +28,7 @@ With Ruby 1.8.7 or better:
 
 require 'dna'
 
-# format detected automatically by inspecting the contents of the file.
+# Automatic Format Detection 
 
 File.open('sequences.fasta') do |handle|
   records = Dna.new handle
