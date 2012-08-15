@@ -20,7 +20,7 @@ class Dna
       when :qseq
         QSEQParser.new @handle
       else
-        raise "#{@format} not supported."
+        raise IOError, "format '#{@format}' not supported. (or file is empty)"
       end
   end
 
