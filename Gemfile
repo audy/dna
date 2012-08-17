@@ -1,9 +1,9 @@
 source :rubygems
 
 group :test do
-  gem 'rspec'
+  gem 'rspec', '~> 2.11.0'
 end
 
 group :development do
-  gem 'jeweler'
+  gem 'jeweler', '~> 1.8.4'
 end
