@@ -1,3 +1,9 @@
 source :rubygems
-gem 'rspec'
-gem 'jeweler'
+
+group :test do
+  gem 'rspec'
+end
+
+group :development do
+  gem 'jeweler'
+end
