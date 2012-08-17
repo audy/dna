@@ -1,5 +1,7 @@
 # DNA
 
+[![Build Status](https://secure.travis-ci.org/audy/dna.png?branch=master)](http://travis-ci.org/audy/dna)
+
 A biological sequence file parser for Ruby
 
 Austin G. Davis-Richardson
