@@ -53,14 +53,40 @@ File.open('sequences.qseq') do |handle|
   puts records.first.inspect
 end
 
-# Even supports Gzip 
+# Even supports Gzip but you must specify the format
+# (can't rewind in Gzip)
 File.open('sequences.fasta.gz') do |handle|
-  records = Dna.new handle
+  records = Dna.new handle, :format => :fasta
 
   records.each do |record|
     puts record.length
   end
 end
+```
+
+## Support for PHRED score parsing
+
+```ruby
+
+# Illumina > 1.3)
+
+record.illumina_qualities # => [31, ..., 37]
+
+# Error probabilities
+
+record.illumina_probabilities
+# => [1.0, 0.7943282347242815, ...,  0.3981071705534972]
+
+# Solexa + Illumina =< 1.3
+
+record.solexa_qualities
+record.solexa_probabilities
+
+# Sanger
+
+record.sanger_qualities
+record.sanger_probabilities
+
 ```
 
 ## Bonus Feature
