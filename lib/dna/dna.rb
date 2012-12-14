@@ -7,9 +7,9 @@ class Dna
 
   attr_reader :format
 
-  def initialize(handle)
+  def initialize(handle, args = {})
     @handle = handle
-    @format = detect_format
+    @format = args[:format] || detect_format
     @iterator =
       case @format
       when :fasta
