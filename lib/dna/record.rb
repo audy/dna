@@ -1,4 +1,6 @@
 class Record # nucleotide record
+  include Phred
+
   def length
     @sequence.length
   end
