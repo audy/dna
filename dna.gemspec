@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Austin G. Davis-Richardson"]
-  s.date = "2012-12-14"
+  s.date = "2012-12-17"
   s.description = "Simple FASTA/FASTQ/QSEQ parser library for Ruby."
   s.email = "harekrishna@gmail.com"
   s.executables = ["dna"]
