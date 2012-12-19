@@ -38,7 +38,7 @@ module Phred
   private
 
   def qualities_with_offset(offset)
-    @qualities.each_byte.map { |q| q - offset }
+    @quality.each_byte.map { |q| q - offset }
   end
 
   def probabilities_with_offset(offset, func)

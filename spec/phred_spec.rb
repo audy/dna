@@ -1,6 +1,7 @@
+# XXX should probably use the actual record objects
 class TestRecord
   include Phred
-  attr_accessor :qualities
+  attr_accessor :quality
 end
 
 ##
@@ -62,12 +63,12 @@ describe Phred do
   format_definitions.each_pair do |type, properties|
 
     it "should properly convert #{type} raw ascii PHRED scores to integers" do
-      test_record.qualities = properties[:string]
+      test_record.quality = properties[:string]
       test_record.send(:"#{type}_scores").should == properties[:scores]
     end
 
     it "should properly convert #{type.to_s} raw ascii PHRED scores to probabilities" do
-      test_record.qualities = properties[:string]
+      test_record.quality = properties[:string]
       test_record.send(:"#{type}_probabilities").should == properties[:probabilities]
     end
   end
