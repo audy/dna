@@ -18,7 +18,7 @@ Features
 
 ## Installation
 
-With Ruby 1.8.7 or better:
+Tested on Ruby 1.9.3 and 2.0.0
 
 ```
 $ (sudo) gem install dna
