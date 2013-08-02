@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "dna"
-  s.version = "0.2.1"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Austin G. Davis-Richardson"]
-  s.date = "2012-12-19"
+  s.date = "2013-08-02"
   s.description = "Simple FASTA/FASTQ/QSEQ parser library for Ruby."
   s.email = "harekrishna@gmail.com"
   s.executables = ["dna"]
@@ -43,7 +43,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://audy.github.com/dna"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.23"
+  s.rubygems_version = "1.8.25"
   s.summary = "Simple FASTA/FASTQ/QSEQ parser library for Ruby"
 
   if s.respond_to? :specification_version then
