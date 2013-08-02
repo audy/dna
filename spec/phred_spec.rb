@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 # XXX should probably use the actual record objects
 class TestRecord
   include Phred
