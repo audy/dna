@@ -9,9 +9,8 @@ Features
     - [fasta](http://en.wikipedia.org/wiki/FASTA)
     - [fastq](http://en.wikipedia.org/wiki/Fastq)
     - [qseq](http://blog.kokocinski.net/index.php/qseq-files-format?blog=2)
-  - Autodetection of file formats so your scripts can be format agnostic
-  - Automatic Gzip support
-  - Files are read from disk (not stored in memory)
+  - Automatic format detection
+  - Lazy iteration
 
 ## Installation
 
