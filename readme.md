@@ -53,9 +53,12 @@ File.open('sequences.qseq') do |handle|
   puts records.first.inspect
 end
 
-# Even supports Gzip but you must specify the format
-# (can't rewind in Gzip)
-File.open('sequences.fasta.gz') do |handle|
+# **caveat:** If you are reading from a compressed file
+# or `stdin` you MUST specify the sequence format:
+
+require 'zlib'
+
+Zlib::GzipReader('sequences.fasta.gz') do |handle|
   records = Dna.new handle, :format => :fasta
 
   records.each do |record|
