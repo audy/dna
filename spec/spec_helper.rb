@@ -1,7 +1,11 @@
 $LOAD_PATH << File.join(File.dirname(__FILE__), 'lib')
 
+require 'coveralls'
+Coveralls.wear!
+
 require 'rspec'
 require 'dna'
+
 
 path = File.dirname(__FILE__)
 fasta_file = File.readlines(File.join(path, 'data/test.fasta'))
