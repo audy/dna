@@ -1,6 +1,8 @@
 require 'zlib'
 
-[ 'version.rb', 'dna.rb', 'phred.rb', 'record.rb'].each do |f|
-  fp = File.join(File.dirname(__FILE__), 'dna', f)
-  require fp
-end
+$:.unshift(File.join(File.expand_path(File.dirname(__FILE__)), 'lib'))
+
+require 'version'
+require 'dna'
+require 'phred'
+require 'record'
