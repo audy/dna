@@ -1,4 +1,4 @@
-# DNA [![Build Status](https://secure.travis-ci.org/audy/dna.png?branch=master)](http://travis-ci.org/audy/dna) [![Coverage Status](https://coveralls.io/repos/audy/dna/badge.png)](https://coveralls.io/r/audy/dna)
+# DNA [![Gem Version](https://badge.fury.io/rb/dna@2x.png)](http://badge.fury.io/rb/dna) [![Build Status](https://secure.travis-ci.org/audy/dna.png?branch=master)](http://travis-ci.org/audy/dna) [![Coverage Status](https://coveralls.io/repos/audy/dna/badge.png)](https://coveralls.io/r/audy/dna)
 A biological sequence file parser for Ruby
 
 Austin G. Davis-Richardson
