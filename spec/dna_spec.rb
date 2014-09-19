@@ -13,6 +13,13 @@ describe Dna do
     fasta.format == :empty
   end
 
+  it 'can read a single record' do
+    File.open('spec/data/single.fasta') do |handle|
+      records = Dna.new(handle).to_a
+      records.first.sequence.should == 'GATC'
+    end
+  end
+
   it 'can automatically parse gzipped files' do
     gzipped.format.should == :fasta
   end
