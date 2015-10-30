@@ -7,12 +7,16 @@ class FastaParser
   def each
     sequence, header = nil, nil
     @handle.each do |line|
+
+      line.strip!
+      next if line.strip.empty? # skip blank lines
+
       if line[0].chr == '>'
         yield Fasta.new(:name => header, :sequence => sequence) if sequence
         sequence = ''
-        header = line[1..-1].strip
+        header = line[1..-1]
       else
-        sequence << line.strip.tr(' ','')
+        sequence << line.tr(' ','')
       end
     end
     yield Fasta.new(:name => header, :sequence => sequence)
